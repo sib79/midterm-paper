@@ -1,0 +1,59 @@
+public class BankingSystem{
+    private double accountBalance = 1000;
+    public void withdraw(double amount) {
+    try 
+{
+    if (amount < 0) {
+    System.out.println("invalid withdrawal");
+    }
+
+ else if (accountBalance - amount >= 0) {
+ accountBalance = accountBalance - amount;
+    System.out.println("you have withdrawn:" + amount);
+} 
+  else
+ {
+    System.out.println("insufficient balance");
+            }
+}
+ catch (Exception e) {
+   System.out.println("An error occurred during withdrawal: "+ e.getMessage());
+        }
+    }
+    
+    public void deposit(double amount) {
+        try {
+            if (amount < 0) {
+                System.out.println("invalid deposit");
+            }
+            else {
+                accountBalance = accountBalance + amount;
+                System.out.println("you have deposited: " +amount);
+            }
+        } 
+    catch (Exception e) {
+            System.out.println("An error occurred during deposit: " +e.getMessage());
+        }
+    }
+    
+    public void checkBalance() {
+        try {
+            System.out.println("your balance is: " +accountBalance);
+        } catch (Exception e) {
+            System.out.println("error "+ e.getMessage());
+        }
+    }
+}
+
+class Main {
+    public static void main(String[] args) {
+        try {
+            BankingSystem bank = new BankingSystem();
+            bank.withdraw(-500);
+            bank.deposit(200);
+            bank.checkBalance();
+        } catch (Exception e) {
+            System.out.println(" error occurred:" + e.getMessage());
+        }
+    }
+}
